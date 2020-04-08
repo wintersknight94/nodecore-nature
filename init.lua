@@ -5,9 +5,9 @@ local include, nodecore
 
 include("biomes")
 include("nodes")
-include("fungi")
 include("plants")
 include("thatch")
 include("schematic")
+include("bigdecor")
 include("decor")
-
+include("fungi")

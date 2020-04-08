@@ -23,6 +23,23 @@ minetest.register_biome({
 	})
 
 minetest.register_biome({
+		name = "old_forest",
+		node_top = "nc_terrain:dirt_with_grass",
+		depth_top = 1,
+		node_filler = "nc_terrain:dirt",
+		depth_filler = 6,
+		node_riverbed = "nc_terrain:dirt",
+		depth_riverbed = 2,
+		node_dungeon = "nc_concrete:bricks_bonded",
+		y_min = 16,
+		y_max = 2000,
+		vertical_blend = 16,
+		horizontal_blend = 16,
+		heat_point = 35,
+		humidity_point = 75,
+	})
+
+minetest.register_biome({
 		name = "thicket",
 		node_top = "nc_terrain:dirt_with_grass",
 		depth_top = 1,

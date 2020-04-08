@@ -9,17 +9,15 @@
 
 FEATURES - Working
 --------------------
-Decorations = Tall Grass, Flowers, Shrubs/Bushes, Thornbriars, Reeds, Ferns, Lilypads, Bamboo, Moss, Mushrooms
+Decorations = Tall Grass, Flowers, Shrubs/Bushes, Thornbriars, Reeds, Ferns, Lilypads, Bamboo, Moss, Mushrooms, Fallen Logs, Larger Trees, Boulders
 Materials = Plant Fibers, Thatch
 Biomes = Forest, Thicket, Grassland, Stonewaste, Floodland
 
 FEATURES - Planned
 --------------------
-Fallen Logs
-Larger Trees
 Ancient Forest Biome
 Ivy
-Boulders
+
 
 KNOWN BUGS/ISSUES
 --------------------
