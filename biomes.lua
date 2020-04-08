@@ -18,7 +18,7 @@ minetest.register_biome({
 		y_max = 2000,
 		vertical_blend = 16,
 		horizontal_blend = 16,
-		heat_point = 60,
+		heat_point = 50,
 		humidity_point = 70,
 	})
 
@@ -35,8 +35,8 @@ minetest.register_biome({
 		y_max = 32,
 		vertical_blend = 8,
 		horizontal_blend = 16,
-		heat_point = 45,
-		humidity_point = 65,
+		heat_point = 40,
+		humidity_point = 75,
 	})
 
 minetest.register_biome({
@@ -85,6 +85,6 @@ minetest.register_biome({
 		vertical_blend = 16,
 		horizontal_blend = 16,
 		heat_point = 100,
-		humidity_point = 25,
+		humidity_point = 0,
 	})
 

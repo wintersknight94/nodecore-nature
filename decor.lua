@@ -34,12 +34,12 @@ minetest.register_decoration({
 			-- octaves = 3,
 			-- persist = 0.66
 		-- },
-		fill_ratio = 0.05,
-		biomes = {"forest"},
+		fill_ratio = 0.2,
+--		biomes = {"forest"},
 		y_min = -2,
 		y_max = 31000,
-		schematic = nodecore.fallen_log_schematic,
---		flags = "place_center_x, place_center_z",
+		schematic = nodecore.deadwood_schematic,
+		flags = "place_center_x, place_center_z",
 		rotation = "random",
 		replacements = {},
 	})
@@ -246,11 +246,11 @@ minetest.register_decoration({
 
 ----------------------------------------
 ---------------MUSHROOMS----------------
-function mushroom_decoration(id, ymin, ymax, offest, scale, seed)
+function mushroom_decoration(id, ymin, ymax, offest, scale, seed, place, biome)
 	minetest.register_decoration({
 		name = {modname .. ":" .. id},
 		deco_type = "simple",
-		place_on = {"group:soil"},
+		place_on = place,
 		sidelen = 16,
 		noise_params = {
 			offset = offset,
@@ -258,17 +258,17 @@ function mushroom_decoration(id, ymin, ymax, offest, scale, seed)
 			spread = {x = 100, y = 100, z = 100},
 			seed = seed,
 			octaves = 3,
-			persist = 0.7
+			persist = 0.2
 		},
---		biomes = {biome},
+		biomes = biome,
 		y_max = ymax,
 		y_min = ymin,
 		decoration = {modname .. ":" .. id},
 	})
 end
------------------------ID---------------ymin----ymax-----offset-----scale----seed--
-mushroom_decoration("mushroom",			1,		80,		-0.25,		0.4,	42)
-mushroom_decoration("mushroom_glow",	-40,	450,	0.01,		0.2,	94)
-mushroom_decoration("mushroom_lux",		-1000,	-15,	0.25,		0.1,	69)
+--------------------ID------------------ymin----ymax----offset------scale---seed----place-----------------------------------------------biome-----
+mushroom_decoration("mushroom",			1,		80,		-0.42,		0.07,	42,		{"group:soil"},										{"grassland", "forest"})
+mushroom_decoration("mushroom_glow",	-400,	10,		0.11,		0.2,	94,		{"group:soil", "group:crumbly", "group:cobble"},	{""})
+mushroom_decoration("mushroom_lux",		-1000,	-100,	0.72,		0.1,	69,		{"group:soil", "group:crumbly", "group:cobble"},	{""})
 -----------------------------------------------------------------------------------
 
