@@ -158,7 +158,7 @@ minetest.register_node("nc_nature:mossy_dirt", {
 minetest.register_node("nc_nature:mossy_bricks", {
 		description = "Mossy Stone Bricks",
 		tiles = {"nc_nature_mossy_stonebrick.png"},
-		drop_in_place = "nc_stonework:bricks_carved",
+		drop_in_place = "nc_stonework:bricks_bonded",
 		groups = {
 			stone = 1,
 			rock = 1,

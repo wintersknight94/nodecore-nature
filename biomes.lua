@@ -19,7 +19,7 @@ minetest.register_biome({
 		vertical_blend = 16,
 		horizontal_blend = 16,
 		heat_point = 50,
-		humidity_point = 70,
+		humidity_point = 60,
 	})
 
 minetest.register_biome({
@@ -31,11 +31,11 @@ minetest.register_biome({
 		node_riverbed = "nc_terrain:dirt",
 		depth_riverbed = 2,
 		node_dungeon = "nc_concrete:bricks_bonded",
-		y_min = 16,
-		y_max = 2000,
+		y_min = 6,
+		y_max = 1000,
 		vertical_blend = 16,
 		horizontal_blend = 16,
-		heat_point = 35,
+		heat_point = 40,
 		humidity_point = 75,
 	})
 
@@ -49,10 +49,10 @@ minetest.register_biome({
 		depth_riverbed = 2,
 		node_dungeon = "nc_terrain:stone",
 		y_min = 4,
-		y_max = 32,
+		y_max = 64,
 		vertical_blend = 8,
 		horizontal_blend = 16,
-		heat_point = 65,
+		heat_point = 70,
 		humidity_point = 80,
 	})
 
@@ -69,7 +69,7 @@ minetest.register_biome({
 		vertical_blend = 16,
 		horizontal_blend = 16,
 		heat_point = 50,
-		humidity_point = 35,
+		humidity_point =40,
 	})
 
 minetest.register_biome({

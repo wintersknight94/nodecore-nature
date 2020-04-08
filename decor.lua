@@ -34,7 +34,7 @@ end
 
 ----------------------------------------
 ----------------FLOWERS-----------------
-function register_flower_decoration(offset, scale, id)
+function register_flower_decoration(offset, scale, id, ymin)
 	minetest.register_decoration({
 		name = {modname .. ":flower_" .. id},
 		deco_type = "simple",
@@ -48,39 +48,39 @@ function register_flower_decoration(offset, scale, id)
 			octaves = 3,
 			persist = 0.4
 		},
-		y_max = 31000,
-		y_min = 1,
+		y_max = 1000,
+		y_min = ymin,
 		decoration = {modname .. ":flower_" .. id},
 	})
 end
 
-register_flower_decoration(-0.03,	0.02,	5)
-register_flower_decoration(-0.015,	0.02,	4)
-register_flower_decoration(0,		0.02,	3)
-register_flower_decoration(0.015,	0.02,	2)
-register_flower_decoration(0.03,	0.02,	1)
+register_flower_decoration(-0.072,	0.02,	"blue",		2)
+register_flower_decoration(-0.041,	0.02,	"red",		20)
+register_flower_decoration(0,		0.02,	"violet",	10)
+register_flower_decoration(0.015,	0.02,	"white",	5)
+register_flower_decoration(0.03,	0.02,	"yellow",	1)
 
 ----------------------------------------
 ---------------REEDS--------------------
--- minetest.register_decoration({
-		-- name = {modname .. ":reeds"},
-		-- deco_type = "simple",
-		-- place_on = {"nc_terrain:dirt_with_grass", "nc_terrain:dirt", "nc_terrain:sand"},
-		-- sidelen = 16,
-		-- noise_params = {
-			-- offset = -0.3,
-			-- scale = 0.7,
-			-- spread = {x = 100, y = 100, z = 100},
-			-- seed = 354,
-			-- octaves = 3,
-			-- persist = 0.7
-		-- },
-		-- y_max = 1,
-		-- y_min = 1,
-		-- decoration = {modname .. ":reeds"},
-		-- spawn_by = "nc_terrain:water_source",
-		-- num_spawn_by = 1,
-	-- })
+minetest.register_decoration({
+		name = {modname .. ":reeds"},
+		deco_type = "simple",
+		place_on = {"group:soil", "nc_terrain:sand"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.3,
+			scale = 0.7,
+			spread = {x = 100, y = 100, z = 100},
+			seed = 354,
+			octaves = 3,
+			persist = 0.7
+		},
+		y_max = 1,
+		y_min = 1,
+		decoration = {modname .. ":reeds"},
+		spawn_by = "nc_terrain:water_source",
+		num_spawn_by = 1,
+	})
 
 --Floodland Reeds--
 minetest.register_decoration({
@@ -155,7 +155,6 @@ minetest.register_decoration({
 			octaves = 3,
 			persist = 0.7
 		},
---		biomes = {"unknown", "forest", "thicket"},
 		y_max = 0,
 		y_min = 0,
 		decoration = "nc_nature:lilypad",
@@ -203,7 +202,7 @@ function mushroom_decoration(id, ymin, ymax, offest, scale, seed, place, biome)
 	})
 end
 --------------------ID------------------ymin----ymax----offset------scale---seed----place-----------------------------------------------biome-----
-mushroom_decoration("mushroom",			1,		80,		-0.42,		0.07,	42,		{"group:soil"},										{"grassland", "forest"})
+mushroom_decoration("mushroom",			1,		80,		-0.42,		0.07,	42,		{"group:soil"},										{"grassland", "forest", "old_forest"})
 mushroom_decoration("mushroom_glow",	-400,	1,		0.11,		0.2,	94,		{"group:soil", "group:crumbly", "group:cobble"},	{""})
 mushroom_decoration("mushroom_lux",		-1000,	-100,	0.72,		0.1,	69,		{"group:soil", "group:crumbly", "group:cobble"},	{""})
 -----------------------------------------------------------------------------------

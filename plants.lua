@@ -226,14 +226,7 @@ minetest.register_node(modname .. ":bamboo", {
 			{-0.1875, -0.5, -0.1875, 0.1875, -0.4375, 0.1875} -- Bottom
 		}
 	},
-	tiles = {
-		"nc_nature_bamboo.png",
-		"nc_nature_bamboo.png",
-		"nc_nature_bamboo.png",
-		"nc_nature_bamboo.png",
-		"nc_nature_bamboo.png",
-		"nc_nature_bamboo.png"
-	},
+	tiles = {"nc_nature_bamboo.png"},
 	climbable = true,
 	silktouch = false,
 	drop = "nc_woodwork:staff",
@@ -244,25 +237,29 @@ minetest.register_node(modname .. ":bamboo", {
 
 ----------------------------------------
 -----------------FLOWERS----------------
-for i = 1, 5 do
-minetest.register_node(modname .. ":flower_" .. i, {
-	description = "Flowers",
-	drawtype = 'plantlike',
-	waving = 1,
-	tiles = {modname .. "_flower_" .. i .. ".png"},
-	sunlight_propagates = true,
-	paramtype = 'light',
-	walkable = false,
-	silktouch = false,
-	groups = { snappy = 1, flora = 1, flammable = 1, attached_node = 1},
-	sounds = nodecore.sounds("nc_terrain_swishy"),
-	buildable_to = true,
-	drop = "nc_nature:plant_fibers",
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
-	},
-})
+function register_flower(id, desc)
+	minetest.register_node(modname .. ":flower_" .. id, {
+		description = desc .. " Flower",
+		drawtype = 'plantlike',
+		waving = 1,
+		tiles = {modname .. "_flower_" .. id .. ".png"},
+		sunlight_propagates = true,
+		paramtype = 'light',
+		walkable = false,
+		silktouch = false,
+		groups = { snappy = 1, flora = 1, flammable = 1, attached_node = 1},
+		sounds = nodecore.sounds("nc_terrain_swishy"),
+		buildable_to = true,
+		drop = "nc_nature:plant_fibers",
+		selection_box = {
+			type = "fixed",
+			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
+		},
+	})
 end
-
+register_flower("blue",			"Blue")
+register_flower("red",			"Red")
+register_flower("violet",		"Violet")
+register_flower("white",		"White")
+register_flower("yellow",		"Yellow")
 ----------------------------------------
