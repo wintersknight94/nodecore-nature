@@ -10,9 +10,9 @@ minetest.register_node(modname .. ":decayed_log", {
 		description = "Decayed Log",
 		drawtype = "normal",
 		tiles = {
-			"nc_nature_fallen_log_core.png",
-			"nc_nature_fallen_log_core.png",
-			"nc_nature_fallen_log_bark.png"
+			"nc_nature_decayed_log_top.png",
+			"nc_nature_decayed_log_top.png",
+			"nc_nature_decayed_log_side.png"
 		},
 		groups = {
 			choppy = 2,
@@ -23,7 +23,8 @@ minetest.register_node(modname .. ":decayed_log", {
 		crush_damage = 1,
 		sounds = nodecore.sounds("nc_tree_woody"),
 		paramtype2 = "facedir",
-		drop = "nc_nature:fallen_log"
+		on_place = minetest.rotate_node,
+		drop = "nc_nature:decayed_log"
 	})
 
 ----------------------------------------
@@ -41,5 +42,24 @@ minetest.register_node(modname .. ":dirt_with_leaf_litter", {
 		},
 		crush_damage = 1,
 		drop_in_place = "nc_terrain:dirt",
+		sounds = nodecore.sounds("nc_terrain_crunchy")
+	})
+
+----------------------------------------
+-------------Tree Branch----------------
+
+minetest.register_node(modname .. ":branch", {
+		description = "Tree Branch",
+		tiles = {"nc_tree_tree_side.png"},
+		silktouch = false,
+		groups = {
+			choppy = 2,
+			flammable = 8,
+			fire_fuel = 6,
+			log = 1,
+			scaling_time = 75
+		},
+		crush_damage = 1,
+		drop = "nc_tree:log",
 		sounds = nodecore.sounds("nc_terrain_crunchy")
 	})

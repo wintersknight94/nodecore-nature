@@ -20,6 +20,7 @@ minetest.register_decoration({
 		replacements = {}
 	})
 
+
 ----------------------------------------
 ---------------FALLEN LOG---------------
 minetest.register_decoration({
@@ -34,12 +35,12 @@ minetest.register_decoration({
 			-- octaves = 3,
 			-- persist = 0.66
 		-- },
-		fill_ratio = 0.2,
---		biomes = {"forest"},
+		fill_ratio = 0.005,
+		biomes = {"forest", "Thicket"},
 		y_min = -2,
-		y_max = 31000,
+		y_max = 1000,
 		schematic = nodecore.deadwood_schematic,
-		flags = "place_center_x, place_center_z",
+--		flags = "place_center_x, place_center_z",
 		rotation = "random",
 		replacements = {},
 	})
@@ -58,12 +59,12 @@ minetest.register_decoration({
 			-- octaves = 3,
 			-- persist = 0.64
 		-- },
-		fill_ratio = 0.25,
---		biomes = {"forest"},
-		y_min = -2,
+		fill_ratio = 0.001,
+		biomes = {"unknown", "grassland", "stonewaste"},
+		y_min = 1,
 		y_max = 31000,
 		schematic = nodecore.boulder_schematic,
---		flags = "place_center_x, place_center_z",
+		flags = "place_center_x, place_center_z",
 		rotation = "random",
 		replacements = {},
 	})
@@ -268,7 +269,7 @@ function mushroom_decoration(id, ymin, ymax, offest, scale, seed, place, biome)
 end
 --------------------ID------------------ymin----ymax----offset------scale---seed----place-----------------------------------------------biome-----
 mushroom_decoration("mushroom",			1,		80,		-0.42,		0.07,	42,		{"group:soil"},										{"grassland", "forest"})
-mushroom_decoration("mushroom_glow",	-400,	10,		0.11,		0.2,	94,		{"group:soil", "group:crumbly", "group:cobble"},	{""})
+mushroom_decoration("mushroom_glow",	-400,	1,		0.11,		0.2,	94,		{"group:soil", "group:crumbly", "group:cobble"},	{""})
 mushroom_decoration("mushroom_lux",		-1000,	-100,	0.72,		0.1,	69,		{"group:soil", "group:crumbly", "group:cobble"},	{""})
 -----------------------------------------------------------------------------------
 
