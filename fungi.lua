@@ -3,15 +3,22 @@ local minetest, nodecore
     = minetest, nodecore
 -- LUALOCALS > ---------------------------------------------------------
 local modname = minetest.get_current_modname()
-local checkdirs = {
-	{x = 1, y = 0, z = 0},
-	{x = -1, y = 0, z = 0},
-	{x = 0, y = 0, z = 1},
-	{x = 0, y = 0, z = -1},
-	{x = 0, y = 1, z = 0},
-	{x = 0, y = -1, z = 0}
+local checkdirs = nodecore.dirs()
+local breathable = {
+    airlike = true,
+    allfaces = true,
+    allfaces_optional = true,
+    torchlike = true,
+    signlike = true,
+    plantlike = true,
+    firelike = true,
+    raillike = true,
+    nodebox = true,
+    mesh = true,
+    plantlike_rooted = true,
+	liquid = true,
+	flowingliquid = true
 }
-
 ----------------------------------------
 ---------------MUSHROOMS----------------
 
@@ -23,11 +30,11 @@ local checkdirs = {
 		sunlight_propagates = true,
 		paramtype = 'light',
 		walkable = false,
-		silktouch = false,
-		groups = { snappy = 1, fungi = 1, flammable = 1, attached_node = 1},
+--		silktouch = false,
+		groups = { snappy = 1, fungi = 1, flammable = 1, attached_node = 1, natdecay = 1},
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		buildable_to = true,
-		drop = "nc_nature:plant_fibers",
+--		drop = "nc_nature:plant_fibers",
 		selection_box = {
 			type = "fixed",
 			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
@@ -42,12 +49,12 @@ local checkdirs = {
 		sunlight_propagates = true,
 		paramtype = 'light',
 		walkable = false,
-		silktouch = false,
+--		silktouch = false,
 		light_source = 2,
-		groups = { snappy = 1, fungi = 1, flammable = 1, attached_node = 1},
+		groups = { snappy = 1, fungi = 1, flammable = 1, attached_node = 1, natdecay = 1},
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		buildable_to = true,
-		drop = "nc_nature:plant_fibers",
+--		drop = "nc_nature:plant_fibers",
 		selection_box = {
 			type = "fixed",
 			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
@@ -62,12 +69,12 @@ local checkdirs = {
 		sunlight_propagates = true,
 		paramtype = 'light',
 		walkable = false,
-		silktouch = false,
+--		silktouch = false,
 		light_source = 4,
-		groups = { snappy = 1, fungi = 1, flammable = 1, attached_node = 1},
+		groups = { snappy = 1, fungi = 1, flammable = 1, attached_node = 1, natdecay = 1},
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		buildable_to = true,
-		drop = "nc_nature:plant_fibers",
+--		drop = "nc_nature:plant_fibers",
 		selection_box = {
 			type = "fixed",
 			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
@@ -158,6 +165,19 @@ minetest.register_node("nc_nature:mossy_dirt", {
 minetest.register_node("nc_nature:mossy_bricks", {
 		description = "Mossy Stone Bricks",
 		tiles = {"nc_nature_mossy_stonebrick.png"},
+		drop_in_place = "nc_stonework:bricks",
+		groups = {
+			stone = 1,
+			rock = 1,
+			snappy = 1,
+			brick = 1,
+			mossy = 1
+			},
+		sounds = nodecore.sounds("nc_terrain_stony")
+	})
+minetest.register_node("nc_nature:mossy_bricks_bonded", {
+		description = "Mossy Bonded Stone Bricks",
+		tiles = {"nc_nature_mossy_stonebrick.png"},
 		drop_in_place = "nc_stonework:bricks_bonded",
 		groups = {
 			stone = 1,
@@ -171,16 +191,28 @@ minetest.register_node("nc_nature:mossy_bricks", {
 
 ----------------------------------------
 --------------MOSS GROWTH---------------
+--Thanks to Kimapr for helping figure this out--
 
 --cobble--
-nodecore.register_limited_abm({
+nodecore.register_limited_abm({ --notes about this line of code,
 		label = "moss spread cobble",
 		nodenames = {"nc_terrain:cobble"},
 		neighbors = {"group:mossy"},
 		interval = 10,
 		chance = 20,
 		action = function(pos)
-			nodecore.set_node(pos, {name = modname .. ":mossy_cobble"})
+			local good = false
+			for _,dir in ipairs(nodecore.dirs()) do
+			local posn = vector.add(pos,dir)
+			local node = minetest.get_node(posn)
+			if breathable[minetest.registered_items[node.name].drawtype] then
+				good = true
+				break
+			end
+		end
+			if good then
+				nodecore.set_node(pos, {name = modname .. ":mossy_cobble"})
+			end
 		end
 	})
 
@@ -190,11 +222,21 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_terrain:stone"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 10,
+		chance = 20,
 		action = function(pos)
-			nodecore.set_node(pos, {name = modname .. ":mossy_stone"})
+			local good = false
+			for _,dir in ipairs(nodecore.dirs()) do
+			local posn = vector.add(pos,dir)
+			local node = minetest.get_node(posn)
+			if breathable[minetest.registered_items[node.name].drawtype] then
+				good = true
+				break
+			end
 		end
---	end
+			if good then
+				nodecore.set_node(pos, {name = modname .. ":mossy_stone"})
+			end
+		end
 	})
 
 --thatch--
@@ -203,9 +245,20 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_nature:thatch"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 10,
+		chance = 20,
 		action = function(pos)
-			nodecore.set_node(pos, {name = modname .. ":mossy_thatch"})
+			local good = false
+			for _,dir in ipairs(nodecore.dirs()) do
+			local posn = vector.add(pos,dir)
+			local node = minetest.get_node(posn)
+			if breathable[minetest.registered_items[node.name].drawtype] then
+				good = true
+				break
+			end
+		end
+			if good then
+				nodecore.set_node(pos, {name = modname .. ":mossy_thatch"})
+			end
 		end
 	})
 
@@ -215,9 +268,20 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_tree:tree"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 10,
+		chance = 20,
 		action = function(pos)
-			nodecore.set_node(pos, {name = modname .. ":mossy_trunk"})
+			local good = false
+			for _,dir in ipairs(nodecore.dirs()) do
+			local posn = vector.add(pos,dir)
+			local node = minetest.get_node(posn)
+			if breathable[minetest.registered_items[node.name].drawtype] then
+				good = true
+				break
+			end
+		end
+			if good then
+				nodecore.set_node(pos, {name = modname .. ":mossy_trunk"})
+			end
 		end
 	})
 
@@ -227,21 +291,64 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_terrain:dirt"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 10,
+		chance = 20,
 		action = function(pos)
-			nodecore.set_node(pos, {name = modname .. ":mossy_dirt"})
+			local good = false
+			for _,dir in ipairs(nodecore.dirs()) do
+			local posn = vector.add(pos,dir)
+			local node = minetest.get_node(posn)
+			if breathable[minetest.registered_items[node.name].drawtype] then
+				good = true
+				break
+			end
+		end
+			if good then
+				nodecore.set_node(pos, {name = modname .. ":mossy_dirt"})
+			end
 		end
 	})
 
 --stonebricks--
 nodecore.register_limited_abm({
-		label = "moss spread stonebricks",
-		nodenames = {"group:brick"},
+		label = "moss spread stacked stonebricks",
+		nodenames = {"nc_stonework:bricks"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 10,
+		chance = 20,
 		action = function(pos)
-			nodecore.set_node(pos, {name = modname .. ":mossy_stonebrick"})
+			local good = false
+			for _,dir in ipairs(nodecore.dirs()) do
+			local posn = vector.add(pos,dir)
+			local node = minetest.get_node(posn)
+			if breathable[minetest.registered_items[node.name].drawtype] then
+				good = true
+				break
+			end
+		end
+			if good then
+				nodecore.set_node(pos, {name = modname .. ":mossy_bricks"})
+			end
+		end
+	})
+nodecore.register_limited_abm({
+		label = "moss spread bonded stonebricks",
+		nodenames = {"nc_stonework:bricks_bonded"},
+		neighbors = {"group:mossy"},
+		interval = 10,
+		chance = 20,
+		action = function(pos)
+			local good = false
+			for _,dir in ipairs(nodecore.dirs()) do
+			local posn = vector.add(pos,dir)
+			local node = minetest.get_node(posn)
+			if breathable[minetest.registered_items[node.name].drawtype] then
+				good = true
+				break
+			end
+		end
+			if good then
+				nodecore.set_node(pos, {name = modname .. ":mossy_bricks_bonded"})
+			end
 		end
 	})
 

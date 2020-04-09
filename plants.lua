@@ -6,29 +6,7 @@ local modname = minetest.get_current_modname()
 
 ----------------------------------------
 -----------------GRASS------------------
-minetest.register_node("nc_nature:grass_1", {
-	description = ("Grass"),
-	drawtype = "plantlike",
-	waving = 1,
-	tiles = {"nc_nature_grass_1.png"},
-	-- Use texture of a taller grass stage in inventory
-	inventory_image = "nc_nature_grass_3.png",
-	wield_image = "nc_nature_grass_3.png",
-	paramtype = "light",
-	sunlight_propagates = true,
-	walkable = false,
-	buildable_to = true,
-	silktouch = false,
-	drop = "nc_nature:plant_fibers",
-	groups = {snappy = 1, flora = 1, attached_node = 1, grass = 1, flammable = 1},
-		sounds = nodecore.sounds("nc_terrain_swishy"),
-	selection_box = {
-		type = "fixed",
-		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, -5 / 16, 6 / 16},
-	},
-})
-
-for i = 2, 5 do
+for i = 1, 5 do
 	minetest.register_node("nc_nature:grass_" .. i, {
 		description = ("Grass"),
 		drawtype = "plantlike",
@@ -66,9 +44,9 @@ minetest.register_node("nc_nature:reeds", {
 	sunlight_propagates = true,
 	walkable = false,
 	buildable_to = true,
-	silktouch = false,
-	groups = {snappy = 1, flora = 1, flammable = 3, attached_node = 1},
-	drop = "nc_nature:plant_fibers",
+--	silktouch = false,
+	groups = {snappy = 1, flora = 1, flammable = 3, attached_node = 1, natdecay = 1},
+--	drop = "nc_nature:plant_fibers",
 	sounds = nodecore.sounds("nc_terrain_swishy"),
 	selection_box = {
 		type = "fixed",
@@ -107,7 +85,8 @@ minetest.register_node("nc_nature:shrub", {
 			falling_repose = 1,
 			green = 1,
 			stack_as_node = 1,
-			shrub = 1
+			shrub = 1,
+			natdecay = 1
 			}
 		},
 		no_repack = true,
@@ -118,7 +97,7 @@ nodecore.register_limited_abm({
 		label = "Shrub Rerooting",
 		nodenames = {modname .. ":shrub_loose"},
 		neighbors = {"group:soil"},
-		interval = 10,
+		interval = 2,
 		chance = 10,
 		action = function(pos)
 			nodecore.set_loud(pos, {name = modname .. ":shrub"})
@@ -173,11 +152,11 @@ minetest.register_node(modname .. ":fern", {
 	sunlight_propagates = true,
 	paramtype = 'light',
 	walkable = false,
-	silktouch = false,
-	groups = { snappy = 1, flora = 1, flammable = 2, attached_node = 1},
+--	silktouch = false,
+	groups = { snappy = 1, flora = 1, flammable = 2, attached_node = 1, natdecay = 1},
 	sounds = nodecore.sounds("nc_terrain_swishy"),
 	buildable_to = true,
-	drop = "nc_nature:plant_fibers",
+--	drop = "nc_nature:plant_fibers",
 	selection_box = {
 		type = "fixed",
 		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
@@ -243,14 +222,16 @@ function register_flower(id, desc)
 		drawtype = 'plantlike',
 		waving = 1,
 		tiles = {modname .. "_flower_" .. id .. ".png"},
+		wield_image = {modname .. "_flower_" .. id .. ".png"},
+		inventory_image = {modname .. "_flower_" .. id .. ".png"},
 		sunlight_propagates = true,
 		paramtype = 'light',
 		walkable = false,
-		silktouch = false,
-		groups = { snappy = 1, flora = 1, flammable = 1, attached_node = 1},
+--		silktouch = false,
+		groups = { snappy = 1, flora = 1, flammable = 1, attached_node = 1, natdecay = 1},
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		buildable_to = true,
-		drop = "nc_nature:plant_fibers",
+--		drop = "nc_nature:plant_fibers",
 		selection_box = {
 			type = "fixed",
 			fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
@@ -262,4 +243,40 @@ register_flower("red",			"Red")
 register_flower("violet",		"Violet")
 register_flower("white",		"White")
 register_flower("yellow",		"Yellow")
+
 ----------------------------------------
+---------------STARFLOWER---------------
+minetest.register_node(modname .. ":starflower", {
+	description = "Starflower",
+	drawtype = 'plantlike',
+	waving = 1,
+	tiles = {modname .. "_starflower.png"},
+	wield_image = {modname .. "_starflower.png"},
+	inventory_image = {modname .. "_starflower.png"},
+	sunlight_propagates = true,
+	paramtype = 'light',
+	light_source = 7,
+	walkable = false,
+	groups = { snappy = 1, flora = 1, flammable = 1, attached_node = 1, natdecay = 1},
+	sounds = nodecore.sounds("nc_terrain_swishy"),
+	buildable_to = true,
+	selection_box = {
+		type = "fixed",
+		fixed = {-6 / 16, -0.5, -6 / 16, 6 / 16, 4 / 16, 6 / 16},
+	},
+})
+
+----------------------------------------
+-----------------Decay------------------
+-----Plant Decay-----
+nodecore.register_aism({
+				label = "Plant Stack Decay",
+				interval = 2,
+				chance = 10,
+				itemnames = {"group:natdecay"},
+				action = function(stack, data)
+						minetest.sound_play("nc_terrain_swishy", {gain = 0.4, pos = data.pos})
+						stack:set_name(modname .. ":plant_fibers")
+						return stack
+				end
+		})

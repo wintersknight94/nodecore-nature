@@ -43,6 +43,13 @@ local lowboulder = {
 	".sss.",
 	"..c..",
 }
+local rareslice = {
+	".....",
+	".sss.",
+	".sos.",
+	".sss.",
+	".....",
+}
 local midboulder = {
 	".....",
 	"..s..",
@@ -57,11 +64,20 @@ local topboulder = {
 	".....",
 	".....",
 }
+local mossboulder = {
+	".....",
+	".....",
+	"..m..",
+	".....",
+	".....",
+}
 
 nodecore.boulder_params = {
-	{},
-	{},
-	{prob = 160}
+	{prob = 255},
+	{prob = 100},
+	{prob = 255},
+	{prob = 100},
+	{prob = 200},
 }
 
 nodecore.boulder_schematic = nodecore.ezschematic(
@@ -69,19 +85,23 @@ nodecore.boulder_schematic = nodecore.ezschematic(
 		["."] = {name = "air", prob = 0},
 		s = {name = "nc_terrain:stone", prob = 255},
 		c = {name = "nc_terrain:cobble", prob = 160},
+		m = {name = "nc_nature:mossy_stone", prob = 255},
+		o = {name = "nc_lode:ore", prob = 255},
 	},
 	{
 		lowboulder,
+		rareslice,
 		midboulder,
 		topboulder,
-		topboulder
+		mossboulder
 	},
 	{
 		yslice_prob = {
 			{ypos = 1, prob = 255},
-			{ypos = 2, prob = 160},
-			{ypos = 3, prob = 160},
-			{ypos = 4, prob = 160},
+			{ypos = 2, prob = 100},
+			{ypos = 3, prob = 225},
+			{ypos = 4, prob = 100},
+			{ypos = 5, prob = 200},
 		}
 	}
 )

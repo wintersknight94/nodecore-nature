@@ -48,17 +48,17 @@ function register_flower_decoration(offset, scale, id, ymin)
 			octaves = 3,
 			persist = 0.4
 		},
-		y_max = 1000,
+		y_max = 140,
 		y_min = ymin,
 		decoration = {modname .. ":flower_" .. id},
 	})
 end
 
-register_flower_decoration(-0.072,	0.02,	"blue",		2)
-register_flower_decoration(-0.041,	0.02,	"red",		20)
-register_flower_decoration(0,		0.02,	"violet",	10)
-register_flower_decoration(0.015,	0.02,	"white",	5)
-register_flower_decoration(0.03,	0.02,	"yellow",	1)
+register_flower_decoration(0.072,	0.02,	"violet",	40)
+register_flower_decoration(0.042,	0.02,	"red",		30)
+register_flower_decoration(0.005,	0.02,	"blue",		20)
+register_flower_decoration(0.015,	0.01,	"white",	5)
+register_flower_decoration(0.035,	0.01,	"yellow",	1)
 
 ----------------------------------------
 ---------------REEDS--------------------
@@ -134,7 +134,7 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.1,
-		biomes = {"forest"},
+		biomes = {"forest", "old_forest"},
 		y_max = 2000,
 		y_min = -20,
 		decoration = {modname .. ":fern"},
@@ -145,7 +145,7 @@ minetest.register_decoration({
  	minetest.register_decoration({
 		name = {modname .. ":lilypad"},
 		deco_type = "simple",
-		place_on = {"nc_terrain:dirt", "nc_terrain:sand"},
+		place_on = {"group:soil", "group:crumbly", "group:stone", },
 		sidelen = 16,
 		noise_params = {
 			offset = -0.12,
@@ -202,8 +202,27 @@ function mushroom_decoration(id, ymin, ymax, offest, scale, seed, place, biome)
 	})
 end
 --------------------ID------------------ymin----ymax----offset------scale---seed----place-----------------------------------------------biome-----
-mushroom_decoration("mushroom",			1,		80,		-0.42,		0.07,	42,		{"group:soil"},										{"grassland", "forest", "old_forest"})
-mushroom_decoration("mushroom_glow",	-400,	1,		0.11,		0.2,	94,		{"group:soil", "group:crumbly", "group:cobble"},	{""})
-mushroom_decoration("mushroom_lux",		-1000,	-100,	0.72,		0.1,	69,		{"group:soil", "group:crumbly", "group:cobble"},	{""})
+mushroom_decoration("mushroom",			1,		80,		-0.42,		0.07,	42,		{"group:soil", "group:log"},									{"grassland", "forest", "old_forest"})
+mushroom_decoration("mushroom_glow",	-400,	1,		0.11,		0.2,	94,		{"group:soil", "group:log", "group:crumbly", "group:cobble"},	{""})
+mushroom_decoration("mushroom_lux",		-1000,	-100,	0.72,		0.1,	69,		{"group:soil", "group:crumbly", "group:cobble"},				{""})
 -----------------------------------------------------------------------------------
 
+----------------------------------------
+---------------STARFLOWER---------------
+minetest.register_decoration({
+		name = {modname .. ":starflower"},
+		deco_type = "simple",
+		place_on = {"group:soil"},
+		sidelen = 16,
+		noise_params = {
+			offset = -0.7,
+			scale = 0.7,
+			spread = {x = 700, y = 70, z = 700},
+			seed = 777,
+			octaves = 7,
+			persist = 0.7
+		},
+		y_max = 31000,
+		y_min = 200,
+		decoration = {modname .. ":starflower"},
+	})

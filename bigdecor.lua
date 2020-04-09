@@ -11,7 +11,7 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.02,
-		biomes = {"forest", "thicket"},
+		biomes = {"forest", "thicket", "OLD_FOREST"},
 		y_min = 1,
 		y_max = 1000,
 		schematic = nodecore.talltree_schematic,
@@ -75,7 +75,7 @@ minetest.register_decoration({
 			-- persist = 0.64
 		-- },
 		fill_ratio = 0.001,
-		biomes = {"unknown", "grassland", "stonewaste", "old_forest"},
+		biomes = {"grassland", "stonewaste", "old_forest"},
 		y_min = 1,
 		y_max = 31000,
 		schematic = nodecore.boulder_schematic,
