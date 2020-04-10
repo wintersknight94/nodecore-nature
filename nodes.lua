@@ -27,6 +27,19 @@ minetest.register_node(modname .. ":decayed_log", {
 		drop = "nc_nature:decayed_log"
 	})
 
+-----Decayed Log To Peat-----
+nodecore.register_craft({
+		label = "grind decayed log to peat",
+		action = "pummel",
+		toolgroups = {crumbly = 2},
+		nodes = {
+			{
+				match = {name = modname .. ":decayed_log"},
+				replace = "nc_tree:peat"
+			}
+		}
+	})
+
 ----------------------------------------
 ---------DIRT_WITH_LEAF_LITTER----------
 minetest.register_node(modname .. ":dirt_with_leaf_litter", {

@@ -1,3 +1,9 @@
+-- LUALOCALS < ---------------------------------------------------------
+local minetest, nodecore
+    = minetest, nodecore
+-- LUALOCALS > ---------------------------------------------------------
+local modname = minetest.get_current_modname()
+
 -----------------------------------------
 ------------------Thatch-----------------
 
@@ -30,6 +36,7 @@ nodecore.register_craft({
 nodecore.register_craft({
 		label = "break thatch into fibers",
 		action = "pummel",
+		priority = -1,
 		toolgroups = {choppy = 2},
 		nodes = {
 			{match = "nc_nature:thatch", replace = "air"}
@@ -50,4 +57,17 @@ minetest.register_craftitem("nc_nature:plant_fibers", {
 	sounds = nodecore.sounds("nc_terrain_swishy"),
 })
 
+-----Fibers To Peat-----
+nodecore.register_craft({
+		label = "grind plant fibers to peat",
+		action = "pummel",
+--		priority = -1,
+		toolgroups = {crumbly = 2},
+		nodes = {
+			{
+				match = {name = modname .. ":plant_fibers", count = 8},
+				replace = "nc_tree:peat"
+			}
+		}
+	})
 
