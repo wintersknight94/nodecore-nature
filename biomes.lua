@@ -58,7 +58,7 @@ minetest.register_biome({
 		node_dungeon = "nc_stonework:bricks_bonded",
 		node_dungeon_alt = "nc_nature:mossy_bricks_bonded",
 		y_min = 6,
-		y_max = 100,
+		y_max = 1000,
 		vertical_blend = 16,
 		horizontal_blend = 16,
 		heat_point = 40,
@@ -78,7 +78,7 @@ minetest.register_biome({
 		node_dungeon = "nc_stonework:bricks_bonded",
 		node_dungeon_alt = "nc_nature:mossy_bricks_bonded",
 		y_min = 6,
-		y_max = 100,
+		y_max = 1000,
 		vertical_blend = 16,
 		horizontal_blend = 16,
 		heat_point = 35,
@@ -141,8 +141,8 @@ minetest.register_biome({
 		y_max = 31000,
 		vertical_blend = 16,
 		horizontal_blend = 16,
-		heat_point = 90,
-		humidity_point = 5,
+		heat_point = 100,
+		humidity_point = 0,
 	})
 
 ----------------------------------------
@@ -161,7 +161,7 @@ minetest.register_biome({ --This is the best 'cold biome' i can do without addin
 		y_max = 31000,
 		vertical_blend = 16,
 		horizontal_blend = 16,
-		heat_point = 10,
+		heat_point = 5,
 		humidity_point = 5,
 	})
 

@@ -11,7 +11,7 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.02,
-		biomes = {"forest", "thicket", "OLD_FOREST"},
+		biomes = {"forest", "thicket", "old_forest"},
 		y_min = 1,
 		y_max = 1000,
 		schematic = nodecore.talltree_schematic,
@@ -27,10 +27,26 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.02,
-		biomes = {"old_forest"},
+		biomes = {"old_forest", "ancient_forest"},
 		y_min = 1,
 		y_max = 200,
 		schematic = nodecore.grandtree_schematic,
+		flags = "place_center_x, place_center_z",
+		rotation = "random",
+		replacements = {}
+	})
+
+----------------------------------------
+-------------ANTIQUE TREE---------------
+minetest.register_decoration({
+		deco_type = "schematic",
+		place_on = {"group:soil"},
+		sidelen = 16,
+		fill_ratio = 0.02,
+		biomes = {"old_forest", "ancient_forest"},
+		y_min = 1,
+		y_max = 200,
+		schematic = nodecore.antiquetree_schematic,
 		flags = "place_center_x, place_center_z",
 		rotation = "random",
 		replacements = {}
@@ -51,7 +67,7 @@ minetest.register_decoration({
 			-- persist = 0.66
 		-- },
 		fill_ratio = 0.005,
-		biomes = {"forest", "thicket", "old_forest"},
+		biomes = {"forest", "thicket", "old_forest", "ancient_forest"},
 		y_min = -2,
 		y_max = 1000,
 		schematic = nodecore.deadwood_schematic,
@@ -75,7 +91,7 @@ minetest.register_decoration({
 			-- persist = 0.64
 		-- },
 		fill_ratio = 0.001,
-		biomes = {"grassland", "stonewaste", "old_forest"},
+		biomes = {"grassland", "stonewaste", "old_forest", "ancient_forest"},
 		y_min = 1,
 		y_max = 31000,
 		schematic = nodecore.boulder_schematic,

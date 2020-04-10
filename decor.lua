@@ -134,7 +134,7 @@ minetest.register_decoration({
 		place_on = {"group:soil"},
 		sidelen = 16,
 		fill_ratio = 0.1,
-		biomes = {"forest", "old_forest"},
+		biomes = {"forest", "old_forest", "ancient_forest"},
 		y_max = 2000,
 		y_min = -20,
 		decoration = {modname .. ":fern"},

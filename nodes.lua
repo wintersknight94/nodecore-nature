@@ -46,7 +46,7 @@ minetest.register_node(modname .. ":dirt_with_leaf_litter", {
 	})
 
 ----------------------------------------
--------------Tree Branch----------------
+-------------TREE BRANCH----------------
 
 minetest.register_node(modname .. ":branch", {
 		description = "Tree Branch",

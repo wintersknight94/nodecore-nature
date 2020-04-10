@@ -199,7 +199,7 @@ nodecore.register_limited_abm({ --notes about this line of code,
 		nodenames = {"nc_terrain:cobble"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 20,
+		chance = 40,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -222,7 +222,7 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_terrain:stone"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 20,
+		chance = 40,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -245,7 +245,7 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_nature:thatch"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 20,
+		chance = 40,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -268,7 +268,7 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_tree:tree"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 20,
+		chance = 40,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -291,7 +291,7 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_terrain:dirt"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 20,
+		chance = 40,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -314,7 +314,7 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_stonework:bricks"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 20,
+		chance = 40,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -335,7 +335,7 @@ nodecore.register_limited_abm({
 		nodenames = {"nc_stonework:bricks_bonded"},
 		neighbors = {"group:mossy"},
 		interval = 10,
-		chance = 20,
+		chance = 40,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do

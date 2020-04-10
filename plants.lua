@@ -276,7 +276,10 @@ nodecore.register_aism({
 				itemnames = {"group:natdecay"},
 				action = function(stack, data)
 						minetest.sound_play("nc_terrain_swishy", {gain = 0.4, pos = data.pos})
-						stack:set_name(modname .. ":plant_fibers")
-						return stack
+						local taken = stack:take_item(1)
+				taken:set_name(modname .. ":plant_fibers")
+				if data.inv then taken = data.inv:add_item("main", taken) end
+				if not taken:is_empty() then nodecore.item_eject(data.pos, taken) end
+				return stack
 				end
 		})
