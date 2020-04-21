@@ -241,7 +241,7 @@ end
 register_flower("blue",			"Blue")
 register_flower("red",			"Red")
 register_flower("violet",		"Violet")
-register_flower("white",		"White")
+register_flower("white",			"White")
 register_flower("yellow",		"Yellow")
 
 ----------------------------------------
