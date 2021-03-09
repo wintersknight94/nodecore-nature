@@ -80,7 +80,7 @@ minetest.register_decoration({
 ----------------BOULDER-----------------
 minetest.register_decoration({
 		deco_type = "schematic",
-		place_on = {"group:soil", "nc_terrain:sand"},
+		place_on = {"group:soil", "group:sand", "group:gravel"},
 		sidelen = 16,
 		-- noise_params = {
 			-- offset = -0.008,

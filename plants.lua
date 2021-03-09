@@ -20,7 +20,7 @@ for i = 1, 5 do
 		buildable_to = true,
 		silktouch = false,
 		drop = "nc_nature:plant_fibers",
-		groups = {snappy = 1, flora = 1, attached_node = 1, grass = 1, flammable = 1},
+		groups = {snappy = 1, flora = 1, attached_node = 1, tallgrass = 1, flammable = 1},
 		sounds = nodecore.sounds("nc_terrain_swishy"),
 		selection_box = {
 			type = "fixed",
@@ -147,8 +147,8 @@ minetest.register_node(modname .. ":fern", {
 	drawtype = 'plantlike',
 	waving = 1,
 	tiles = {modname .. "_fern.png"},
-	inventory_image = {modname .. "_fern.png"},
-	wield_image = {modname .. "_fern.png"},
+	inventory_image = "nc_nature_fern.png",
+	wield_image = modname .. "_fern.png",
 	sunlight_propagates = true,
 	paramtype = 'light',
 	walkable = false,
@@ -209,9 +209,9 @@ minetest.register_node(modname .. ":bamboo", {
 	climbable = true,
 	silktouch = false,
 	drop = "nc_woodwork:staff",
-	groups = {choppy = 2, flora = 1, flammable = 2, fire_fuel = 1, falling_node = 1},
-	cruch_damage = 1,
-	sounds = nodecore.sounds("nc_terrain_swishy")
+	groups = {choppy = 1, flora = 1, flammable = 2, fire_fuel = 1, falling_node = 1},
+	crush_damage = 1,
+	sounds = nodecore.sounds("nc_tree_sticky")
 })
 
 ----------------------------------------
@@ -222,8 +222,8 @@ function register_flower(id, desc)
 		drawtype = 'plantlike',
 		waving = 1,
 		tiles = {modname .. "_flower_" .. id .. ".png"},
-		wield_image = {modname .. "_flower_" .. id .. ".png"},
-		inventory_image = {modname .. "_flower_" .. id .. ".png"},
+		wield_image = modname .. "_flower_" .. id .. ".png",
+		inventory_image = modname .. "_flower_" .. id .. ".png",
 		sunlight_propagates = true,
 		paramtype = 'light',
 		walkable = false,
@@ -251,8 +251,8 @@ minetest.register_node(modname .. ":starflower", {
 	drawtype = 'plantlike',
 	waving = 1,
 	tiles = {modname .. "_starflower.png"},
-	wield_image = {modname .. "_starflower.png"},
-	inventory_image = {modname .. "_starflower.png"},
+	wield_image = modname .. "_starflower.png",
+	inventory_image = modname .. "_starflower.png",
 	sunlight_propagates = true,
 	paramtype = 'light',
 	light_source = 7,

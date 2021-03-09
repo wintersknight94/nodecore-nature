@@ -8,7 +8,7 @@ local modname = minetest.get_current_modname()
 -----------------GRASS------------------
 function register_grass_decoration(offset, scale, length)
 	minetest.register_decoration({
-		name = {modname .. ":grass_" .. length},
+		label = {modname .. ":grass_" .. length},
 		deco_type = "simple",
 		place_on = {"nc_terrain:dirt_with_grass"},
 		sidelen = 16,
@@ -36,7 +36,7 @@ end
 ----------------FLOWERS-----------------
 function register_flower_decoration(offset, scale, id, ymin)
 	minetest.register_decoration({
-		name = {modname .. ":flower_" .. id},
+		label = {modname .. ":flower_" .. id},
 		deco_type = "simple",
 		place_on = {"nc_terrain:dirt_with_grass"},
 		sidelen = 16,
@@ -63,7 +63,7 @@ register_flower_decoration(0.035,	0.01,	"yellow",	1)
 ----------------------------------------
 ---------------REEDS--------------------
 minetest.register_decoration({
-		name = {modname .. ":reeds"},
+		label = {modname .. ":reeds"},
 		deco_type = "simple",
 		place_on = {"group:soil", "nc_terrain:sand"},
 		sidelen = 16,
@@ -84,7 +84,7 @@ minetest.register_decoration({
 
 --Floodland Reeds--
 minetest.register_decoration({
-		name = {modname .. ":reeds_floodland"},
+		label = {modname .. ":reeds_floodland"},
 		deco_type = "simple",
 		place_on = {"nc_terrain:dirt_with_grass", "nc_terrain:dirt", "nc_terrain:sand"},
 		sidelen = 16,
@@ -98,7 +98,7 @@ minetest.register_decoration({
 ----------------------------------------
 ---------------SHRUB----------------
 minetest.register_decoration({
-		name = {modname .. ":shrub"},
+		label = {modname .. ":shrub"},
 		deco_type = "simple",
 		place_on = {"group:soil"},
 		sidelen = 16,
@@ -113,7 +113,7 @@ minetest.register_decoration({
 ---------------THORNBRIAR---------------
 
 minetest.register_decoration({
-		name = {modname .. ":thornbriar"},
+		label = {modname .. ":thornbriar"},
 		deco_type = "simple",
 		place_on = {"group:soil"},
 		sidelen = 16,
@@ -129,7 +129,7 @@ minetest.register_decoration({
 ----------------------------------------
 ------------------FERN------------------
 minetest.register_decoration({
-		name = {modname .. ":fern"},
+		label = {modname .. ":fern"},
 		deco_type = "simple",
 		place_on = {"group:soil"},
 		sidelen = 16,
@@ -143,7 +143,7 @@ minetest.register_decoration({
  ---------------------------------------
  ----------------LILYPAD----------------
  	minetest.register_decoration({
-		name = {modname .. ":lilypad"},
+		label = {modname .. ":lilypad"},
 		deco_type = "simple",
 		place_on = {"group:soil", "group:crumbly", "group:stone", },
 		sidelen = 16,
@@ -166,7 +166,7 @@ minetest.register_decoration({
 ----------------------------------------
 -----------------BAMBOO-----------------
 	minetest.register_decoration({
-		name = "nc_nature:bamboo",
+		label = "nc_nature:bamboo",
 		deco_type = "simple",
 		place_on = {"group:soil", "nc_terrain:sand"},
 		sidelen = 16,
@@ -183,7 +183,7 @@ minetest.register_decoration({
 ---------------MUSHROOMS----------------
 function mushroom_decoration(id, ymin, ymax, offest, scale, seed, place, biome)
 	minetest.register_decoration({
-		name = {modname .. ":" .. id},
+		label = modname .. ":" .. id,
 		deco_type = "simple",
 		place_on = place,
 		sidelen = 16,
@@ -198,7 +198,7 @@ function mushroom_decoration(id, ymin, ymax, offest, scale, seed, place, biome)
 		biomes = biome,
 		y_max = ymax,
 		y_min = ymin,
-		decoration = {modname .. ":" .. id},
+		decoration = modname .. ":" .. id,
 	})
 end
 --------------------ID------------------ymin----ymax----offset------scale---seed----place-----------------------------------------------biome-----
@@ -210,18 +210,19 @@ mushroom_decoration("mushroom_lux",		-1000,	-100,	0.72,		0.1,	69,		{"group:soil"
 ----------------------------------------
 ---------------STARFLOWER---------------
 minetest.register_decoration({
-		name = {modname .. ":starflower"},
+		label = {modname .. ":starflower"},
 		deco_type = "simple",
 		place_on = {"group:soil"},
 		sidelen = 16,
-		noise_params = {
-			offset = -0.7,
-			scale = 0.7,
-			spread = {x = 700, y = 70, z = 700},
-			seed = 777,
-			octaves = 7,
-			persist = 0.7
-		},
+		fill_ratio = 0.02,
+--		noise_params = {
+--			offset = -0.7,
+--			scale = 0.7,
+--			spread = {x = 250, y = 25, z = 250},
+--			seed = 777,
+--			octaves = 1,
+--			persist = 0.7
+--		},
 		y_max = 31000,
 		y_min = 200,
 		decoration = {modname .. ":starflower"},

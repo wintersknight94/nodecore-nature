@@ -305,13 +305,13 @@ nodecore.grandtree_params = {
 	{},												--9
 	{},												--10
 	{},												--11
-	{prob = 160},									--12
-	{prob = 160},									--13
-	{leaves = 2,					prob = 160},	--14
-	{leaves = 4},									--15
-	{leaves = 4,					prob = 160},	--16
-	{leaves = 6,	notrunk = true,	prob = 160},	--17
-	{leaves = 2,	notrunk = true}					--18
+	{prob = 200},										--12
+	{prob = 200},										--13
+	{leaves = 2},										--14
+	{leaves = 4},										--15
+	{leaves = 4},										--16
+	{leaves = 6,	notrunk = true},						--17
+	{leaves = 2,	notrunk = true}						--18
 }
 
 nodecore.grandtree_schematic = nodecore.ezschematic(
@@ -359,10 +359,10 @@ nodecore.grandtree_schematic = nodecore.ezschematic(
 			{ypos = 11, prob = 160},
 			{ypos = 12, prob = 160},
 			{ypos = 13, prob = 160},
-			{ypos = 14, prob = 160},
+			{ypos = 14, prob = 255},
 			{ypos = 15, prob = 255},
-			{ypos = 16, prob = 160},
-			{ypos = 17, prob = 160},
+			{ypos = 16, prob = 200},
+			{ypos = 17, prob = 255},
 			{ypos = 18, prob = 255},
 		}
 	}
@@ -376,11 +376,11 @@ local aroot = {
 	"................",
 	"................",
 	"................",
-	"......qqqqq.....",
-	".....qqrrqqq....",
-	"....qqrrrrqq....",
-	"....qqrrrrqqq...",
-	"....qqqrrqqq....",
+	"......qqqq......",
+	".....qqrrqq.....",
+	".....qrrrrq.....",
+	".....qrrrrq.....",
+	".....qqrrqq.....",
 	"......qqqq......",
 	"................",
 	"................",
@@ -466,12 +466,12 @@ local abot = {
 	"................",
 	"................",
 	"................",
-	"................",
-	"......ebbe......",
-	"......bttb......",
-	"......bttb......",
-	"......ebbe......",
-	"................",
+	"......llll......",
+	".....lebbel.....",
+	".....lbttbl.....",
+	".....lbttbl.....",
+	".....lebbel.....",
+	"......llll......",
 	"................",
 	"................",
 	"................",
@@ -481,54 +481,54 @@ local abot = {
 local alow = {
 	"................",
 	"................",
+	"................",
+	"................",
 	"......l..l......",
-	"....llllllll....",
-	"...llllllllll...",
-	"...llllllllll...",
-	"..lllltbbtllll..",
-	"...lllbttblll...",
-	"...lllbttblll...",
-	"..lllltbbtllll..",
-	"...llllllllll...",
-	"...llllllllll...",
-	"....llllllll....",
+	".....ltbbtl.....",
+	"....ltteettl....",
+	".....betteb.....",
+	".....betteb.....",
+	"....ltteettl....",
+	".....ltbbtl.....",
 	"......l..l......",
+	"................",
+	"................",
 	"................",
 	"................",
 }
 local ahi = {
-	".....llllll.....",
-	"...llllllllll...",
-	"..llllllllllll..",
-	".llllllllllllll.",
-	".llltlllllltlll.",
-	"llllllleelllllll",
-	"llllllebbellllll",
-	"lllllebbbbelllll",
-	"lllllebbbbelllll",
-	"llllllebbellllll",
-	"llllllleelllllll",
-	".llltlllllltlll.",
-	".llllllllllllll.",
-	"..llllllllllll..",
-	"...llllllllll...",
-	".....llllll.....",
+	"................",
+	"................",
+	"................",
+	"......llll......",
+	".....lteetl.....",
+	"....lltbbtll....",
+	"...lttttttttl...",
+	"...lbettttebl...",
+	"...lbettttebl...",
+	"...lttttttttl...",
+	"....lltbbtll....",
+	".....lteetl.....",
+	"......llll......",
+	"................",
+	"................",
+	"................",
 }
 local atop = {
 	"................",
 	"................",
-	"......l..l......",
+	"................",
+	"................",
+	".......ll.......",
+	"......llll......",
 	"....llllllll....",
 	"...llllllllll...",
 	"...llllllllll...",
-	"..llllllllllll..",
-	"...llllllllll...",
-	"...llllllllll...",
-	"..llllllllllll..",
-	"...llllllllll...",
-	"...llllllllll...",
 	"....llllllll....",
-	"......l..l......",
+	"......llll......",
+	".......ll.......",
+	"................",
+	"................",
 	"................",
 	"................",
 }
@@ -545,26 +545,26 @@ nodecore.antiquetree_params = {
 	{},												--9
 	{},												--10
 	{},												--11
-	{prob = 160},									--12
-	{prob = 160},									--13
-	{leaves = 2,					prob = 160},	--14
-	{leaves = 4},									--15
-	{leaves = 4,					prob = 160},	--16
-	{leaves = 6,	notrunk = true,	prob = 160},	--17
-	{leaves = 2,	notrunk = true}					--18
+	{prob = 160},										--12
+	{prob = 160},										--13
+	{leaves = 2},										--14
+	{leaves = 4},										--15
+	{leaves = 4},										--16
+	{leaves = 6,	notrunk = true},						--17
+	{leaves = 2,	notrunk = true}						--18
 }
 
 nodecore.antiquetree_schematic = nodecore.ezschematic(
 	{
 		["."] = {name = "air", prob = 0},
 		r = {name = "nc_tree:root", prob = 255, force_place = true},
-		q = {name = "nc_tree:root", prob = 100, force_place = true},
+		q = {name = "nc_tree:root", prob = 75, force_place = true},
 		t = {name = "nc_tree:tree", prob = 255},
 		v = {name = "nc_tree:tree", prob = 160},
 --		h = {name = "nc_nature:branch", prob = 200},
 		b = {name = "nc_tree:leaves", param2 = 2, prob = 255},
 		e = {name = "nc_tree:leaves", param2 = 1, prob = 255},
-		l = {name = "nc_tree:leaves", prob = 240},
+		l = {name = "nc_tree:leaves", prob = 255},
 	},
 	{
 		aroot,			--1
@@ -594,16 +594,16 @@ nodecore.antiquetree_schematic = nodecore.ezschematic(
 			{ypos = 4, prob = 225},
 			{ypos = 5, prob = 160},
 			{ypos = 6, prob = 160},
-			{ypos = 7, prob = 160},
+			{ypos = 7, prob = 255},
 			{ypos = 8, prob = 160},
 			{ypos = 9, prob = 160},
 			{ypos = 10, prob = 160},
 			{ypos = 11, prob = 160},
-			{ypos = 12, prob = 160},
-			{ypos = 13, prob = 160},
-			{ypos = 14, prob = 160},
+			{ypos = 12, prob = 255},
+			{ypos = 13, prob = 255},
+			{ypos = 14, prob = 255},
 			{ypos = 15, prob = 255},
-			{ypos = 16, prob = 160},
+			{ypos = 16, prob = 125},
 			{ypos = 17, prob = 255},
 			{ypos = 18, prob = 255},
 		}
