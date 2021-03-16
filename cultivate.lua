@@ -136,7 +136,7 @@ nodecore.register_limited_abm({
 nodecore.register_limited_abm({
 	label = "mushroom spreading",
 	nodenames = {modname .. ":mushroom"},
---	neighbors = {"group:water"},
+--	neighbors = {"air"},
 	interval = 120,
 	chance = 20,
 	action = function(pos, node)
@@ -145,15 +145,10 @@ nodecore.register_limited_abm({
 		local num = minetest.find_nodes_in_area(
 			{x = pos.x + 1, y = pos.y - 1, z = pos.z + 1},
 			{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
-			{"group:soil", "group:log"})
-		local dname = minetest.get_node(grodown).name
-		local light_level = minetest.get_node_light(pos)
+		{"nc_tree:humus", "nc_terrain:dirt"})
 		if minetest.get_node(gro).name ~= "air" then return end
-          if minetest.get_item_group(dname, {"soil", "log"}) > 0 then return end
-		if light_level > 0 and light_level < 10 then 
-			dim = true
-		end
-		if #num > 0 and dim then
+		if minetest.get_node(grodown).name ~= {"nc_tree:humus", "nc_terrain:dirt"} then return end
+		if #num > 0 and pos.y < 10 then
 			nodecore.set_node(gro, {name = modname .. ":mushroom"})
 		end
 	end,
@@ -162,7 +157,7 @@ nodecore.register_limited_abm({
 nodecore.register_limited_abm({
 	label = "glowshroom spreading",
 	nodenames = {modname .. ":mushroom_glow"},
---	neighbors = {"group:water"},
+--	neighbors = {"air"},
 	interval = 120,
 	chance = 20,
 	action = function(pos, node)
@@ -171,15 +166,10 @@ nodecore.register_limited_abm({
 		local num = minetest.find_nodes_in_area(
 			{x = pos.x + 1, y = pos.y - 1, z = pos.z + 1},
 			{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
-			{"group:soil", "group:log"})
-		local dname = minetest.get_node(grodown).name
-		local light_level = minetest.get_node_light(pos)
+		{"nc_tree:humus", "nc_terrain:dirt"})
 		if minetest.get_node(gro).name ~= "air" then return end
-          if minetest.get_item_group(dname, {"soil", "log"}) > 0 then return end
-		if light_level > 0 and light_level < 10 then 
-			dim = true
-		end
-		if #num > 0 and dim then
+		if minetest.get_node(grodown).name ~= {"nc_tree:humus", "nc_terrain:dirt"} then return end
+		if #num > 0 and pos.y < 10 then
 			nodecore.set_node(gro, {name = modname .. ":mushroom_glow"})
 		end
 	end,
@@ -188,7 +178,7 @@ nodecore.register_limited_abm({
 nodecore.register_limited_abm({
 	label = "luxaeterna spreading",
 	nodenames = {modname .. ":mushroom_lux"},
---	neighbors = {"group:water"},
+--	neighbors = {"air"},
 	interval = 120,
 	chance = 20,
 	action = function(pos, node)
@@ -197,15 +187,10 @@ nodecore.register_limited_abm({
 		local num = minetest.find_nodes_in_area(
 			{x = pos.x + 1, y = pos.y - 1, z = pos.z + 1},
 			{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
-			{"group:soil", "group:log"})
-		local dname = minetest.get_node(grodown).name
-		local light_level = minetest.get_node_light(pos)
+		{"nc_tree:humus", "nc_terrain:dirt"})
 		if minetest.get_node(gro).name ~= "air" then return end
-          if minetest.get_item_group(dname, {"soil", "log"}) > 0 then return end
-		if light_level > 0 and light_level < 10 then 
-			dim = true
-		end
-		if #num > 0 and dim then
+		if minetest.get_node(grodown).name ~= {"nc_tree:humus", "nc_terrain:dirt"} then return end
+		if #num > 0 and pos.y < 10 then
 			nodecore.set_node(gro, {name = modname .. ":mushroom_lux"})
 		end
 	end,
