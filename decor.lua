@@ -122,7 +122,7 @@ minetest.register_decoration({
 		y_max = 200,
 		y_min = -20,
 		height = 1,
-		height_max = 3,
+--		height_max = 3,
 		decoration = {modname .. ":thornbriar"},
 	})
 
@@ -161,22 +161,6 @@ minetest.register_decoration({
 		param2 = 0,
 		param2_max = 3,
 		place_offset_y = 1,
-	})
-
-----------------------------------------
------------------BAMBOO-----------------
-	minetest.register_decoration({
-		label = "nc_nature:bamboo",
-		deco_type = "simple",
-		place_on = {"group:soil", "nc_terrain:sand"},
-		sidelen = 16,
-		fill_ratio = 0.1,
-		y_max = 200,
-		y_min = 1,
-		decoration = "nc_nature:bamboo",
-		height = 2,
-		height_max = 8,
-		biomes = {"thicket", "floodland"}
 	})
 
 ----------------------------------------

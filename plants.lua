@@ -193,28 +193,6 @@ minetest.register_node(modname .. ":lilypad", {
 })
 
 ----------------------------------------
------------------BAMBOO-----------------
-minetest.register_node(modname .. ":bamboo", {
-	description = "Bamboo",
-	drawtype = "nodebox",
-	paramtype = "light",
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.125, -0.4375, -0.125, 0.125, 0.5, 0.125}, -- Shaft
-			{-0.1875, -0.5, -0.1875, 0.1875, -0.4375, 0.1875} -- Bottom
-		}
-	},
-	tiles = {"nc_nature_bamboo.png"},
-	climbable = true,
-	silktouch = false,
-	drop = "nc_woodwork:staff",
-	groups = {choppy = 1, flora = 1, flammable = 2, fire_fuel = 1, falling_node = 1},
-	crush_damage = 1,
-	sounds = nodecore.sounds("nc_tree_sticky")
-})
-
-----------------------------------------
 -----------------FLOWERS----------------
 function register_flower(id, desc)
 	minetest.register_node(modname .. ":flower_" .. id, {
@@ -271,8 +249,8 @@ minetest.register_node(modname .. ":starflower", {
 -----Plant Decay-----
 nodecore.register_aism({
 				label = "Plant Stack Decay",
-				interval = 2,
-				chance = 10,
+				interval = 20,
+				chance = 4,
 				itemnames = {"group:natdecay"},
 				action = function(stack, data)
 						minetest.sound_play("nc_terrain_swishy", {gain = 0.4, pos = data.pos})

@@ -4,6 +4,7 @@ local include, nodecore
 -- LUALOCALS > ---------------------------------------------------------
 
 include("biomes")
+include("bamboo")
 include("nodes")
 include("thatch")
 include("schematic")
