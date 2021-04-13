@@ -118,8 +118,8 @@ nodecore.register_limited_abm({
 		label = "moss spread stone",
 		nodenames = {"nc_terrain:hard_stone_"..i},
 		neighbors = {"group:mossy"},
-		interval = 12,
-		chance = 45,
+		interval = 90,
+		chance = 10,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do

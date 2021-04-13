@@ -198,8 +198,8 @@ nodecore.register_limited_abm({ --notes about this line of code,
 		label = "moss spread cobble",
 		nodenames = {"nc_terrain:cobble"},
 		neighbors = {"group:mossy"},
-		interval = 10,
-		chance = 40,
+		interval = 60,
+		chance = 10,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -221,8 +221,8 @@ nodecore.register_limited_abm({
 		label = "moss spread stone",
 		nodenames = {"nc_terrain:stone"},
 		neighbors = {"group:mossy"},
-		interval = 10,
-		chance = 40,
+		interval = 60,
+		chance = 10,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -244,8 +244,8 @@ nodecore.register_limited_abm({
 		label = "moss spread thatch",
 		nodenames = {"nc_nature:thatch"},
 		neighbors = {"group:mossy"},
-		interval = 10,
-		chance = 40,
+		interval = 60,
+		chance = 10,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -267,8 +267,8 @@ nodecore.register_limited_abm({
 		label = "moss spread tree",
 		nodenames = {"nc_tree:tree"},
 		neighbors = {"group:mossy"},
-		interval = 10,
-		chance = 40,
+		interval = 60,
+		chance = 10,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -290,8 +290,8 @@ nodecore.register_limited_abm({
 		label = "moss spread dirt",
 		nodenames = {"nc_terrain:dirt"},
 		neighbors = {"group:mossy"},
-		interval = 10,
-		chance = 40,
+		interval = 60,
+		chance = 10,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -313,8 +313,8 @@ nodecore.register_limited_abm({
 		label = "moss spread stacked stonebricks",
 		nodenames = {"nc_stonework:bricks"},
 		neighbors = {"group:mossy"},
-		interval = 10,
-		chance = 40,
+		interval = 60,
+		chance = 10,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
@@ -334,8 +334,8 @@ nodecore.register_limited_abm({
 		label = "moss spread bonded stonebricks",
 		nodenames = {"nc_stonework:bricks_bonded"},
 		neighbors = {"group:mossy"},
-		interval = 10,
-		chance = 40,
+		interval = 60,
+		chance = 10,
 		action = function(pos)
 			local good = false
 			for _,dir in ipairs(nodecore.dirs()) do
