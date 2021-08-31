@@ -217,49 +217,6 @@ nodecore.register_limited_abm({
 	end,
 })
 
-nodecore.register_limited_abm({
-	label = "bamboo spreading",
-	nodenames = {modname .. ":bamboo"},
-	neighbors = {"group:water"},
-	interval = 120,
-	chance = 20,
-	action = function(pos, node)
-		local gro = {x = pos.x + math.random(-1, 1), y = pos.y + math.random(-1,1), z = pos.z + math.random(-1, 1)}
-		local grodown = {x = gro.x, y = gro.y - 1, z = gro.z}
-		local num = minetest.find_nodes_in_area(
-			{x = pos.x + 1, y = pos.y - 1, z = pos.z + 1},
-			{x = pos.x - 1, y = pos.y - 1, z = pos.z - 1},
-			{"group:soil", "group:sand"})
-		local dname = minetest.get_node(grodown).name
-		if minetest.get_node(gro).name ~= "air" then return end
-          if minetest.get_item_group(dname, "soil") > 0 then return end
-		if #num > 3 and pos.y < 50 then
-			nodecore.set_node(gro, {name = modname .. ":bamboo"})
-		end
-	end,
-})
-
-nodecore.register_limited_abm({
-    label = "bamboo growing",
-    nodenames = {modname .. ":bamboo"},
-    -- neighbors = {"air"}, -- dunno if this helps, with the air check in the action; I'd compare performance with and without.
-    interval = 60,
-    chance = 10,
-    action = function(pos, node)
-        local up = {x = pos.x, y = pos.y + 1, z = pos.z}
-        if minetest.get_node(up).name ~= "air" then return end
-        for i = 1, 13 do
-            local down = {x = pos.x, y = pos.y - i; z = pos.z}
-            local dname = minetest.get_node(down).name
-            if minetest.get_item_group(dname, "soil") > 0 then
-                return minetest.set_node(up, {name = modname .. ":bamboo"})
-            elseif dname ~= modname .. ":bamboo" then
-                return
-            end
-        end
-    end,
-})
-
 function spread_flower(color)
 	nodecore.register_limited_abm({
 		label = "flower spreading",
