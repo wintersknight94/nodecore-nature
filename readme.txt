@@ -1,3 +1,5 @@
+THIS VERSION IS NO LONGER UPDATED OR MAINTAINED IN ANY WAY.
+USE "wc_naturae" INSTEAD!!
 --------------------------------------------------
 -----------------NodeCore Nature------------------
 --------------------------------------------------
@@ -27,3 +29,7 @@ FIXED BUGS/ISSUES
 Mushrooms dont generate underground. --FIXED--4/7/20--
 
 moss spreads WAY out of control --4/6/20-- FIXED-4/6/2020--
+
+--------------------
+THIS VERSION IS NO LONGER UPDATED OR MAINTAINED IN ANY WAY.
+USE "wc_naturae" INSTEAD!!
